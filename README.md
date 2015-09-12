@@ -139,8 +139,14 @@ When using late days, note that homeworks tend to get harder later in the course
 * **(Least Preferred)**: Email course staff.  There are too many people in the course for this to be a primary option!
 * Announcements will be on website and via emails using courseworks
 
-Contact us if there is any ambiguity in the rules.
- 
+<a name="help"></a>
+How to ask for help:
+
+0. Search google and see if it answers your question
+1. What are you trying to do?
+2. What steps did you think would work and which have you tried?
+3. How did it fail and why do you think it failed (OK to say I don't know why it failed)?
+4. What error did it produce?
 
 
 <!--
