@@ -320,6 +320,8 @@ What about total participation AND key constraints?
         --    (only one A record can exist.  BUG)
         -- what about UNIQUE (a, b)?
         -- how to enforce that a record for A1 exists in A_B?
+
+        -- <insert code here>
         
 What about total participation from both sides?
 
