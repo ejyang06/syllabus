@@ -8,7 +8,11 @@ Instructor
 
 TAs
 
-* TBD
+* Abhijit Roy
+* Ayush Jain
+* Jincheng Li
+* Mengqing Wang
+* Sania Arif
 
 Office hours
 
