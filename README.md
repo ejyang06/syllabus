@@ -82,7 +82,7 @@ Grading Policy
 * Homework: 15% equally weighted
 * Project 1: 15% 
 * Project 2: 5% 
-* Midterm: 25% (closed book, 1/2 cheat sheet) TBA
+* Midterm: 25% (closed book, 1/2 cheat sheet) 10/28
 * Final: 40% (closed book, 1/2 cheat sheet) Last day of class 12/9
 
 Notes on grading (please read):
