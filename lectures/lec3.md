@@ -281,6 +281,7 @@ OK, let's talk about ER --> Relational
 
         -- can I use A_B to ensure each B record has at least 1 A record?
         -- can we express participation?
+        -- what would the DBMS need to do to ensure participation?
 
 OK so the above can do "at most one" e.g., Key constraints
 
@@ -294,16 +295,24 @@ What about the following?
         -- what does this say?
         CREATE TABLE B(
           b int,
+          name text,
           a int NOT NULL references A(a),
           PRIMARY KEY (b)
         ); 
+
+        INSERT INTO B VALUES(1, '', 2); -- fails, not participating in a relationship
+        INSERT INTO A VALUES(2);
+        INSERT INTO B VALUES(1, '', 2); 
         
         -- each B record MUST reference a valid A record
+        -- B => A_B - A
 
         -- what if removed PRIMARY KEY (b)?
-        --    every B record MUST reference 
-        
- 
+        --    many to many, with redundancy in B
+        --    each copy of B record must poin to an A record
+        --    allows multiple copies of e.g., b1->a1.  Which one to update if want to update?
+        -- PRIMARY KEY(a,b) similar problems
+
 What about total participation AND key constraints?
 
         -- A ==> A_B <== B
@@ -321,7 +330,14 @@ What about total participation AND key constraints?
         -- what about UNIQUE (a, b)?
         -- how to enforce that a record for A1 exists in A_B?
 
-        -- <insert code here>
+        -- A must have exactly one B
+        -- B must have exactly one A
+        CREATE TABLE A_AND_B(
+          a int,
+          b int,
+          primary key(a, b)
+        );
+        -- can A have redundant data?  
         
 What about total participation from both sides?
 
@@ -329,6 +345,16 @@ What about total participation from both sides?
 
         -- can't play the "merge B and A_B" trick on both sides
         -- why not?
+
+        CREATE TABLE A_AND_B(
+          a int,
+          b int,
+          primary key(a, b)
+        );
+        -- this is exactly one, how to relax to at least one?
+ 
+
+
 
 What about IS_A relationships?
 
@@ -338,5 +364,66 @@ What about IS_A relationships?
         
         -- What if Employs wants to reference Users?
         -- What if Employs wants to reference Student and Staff?
-        
 
+
+        CREATE TABLE User(
+          uid int PRIMARY KEY,
+          name text
+        )
+
+        CREATE TABLE Student(
+          uid int REFERENCES User,
+          grade int
+        )
+
+        CREATE TABLE Staff(
+          uid int REFERENCES User,
+          rating int
+        )
+        -- uuugh, can't guarantee covering constraint
+        -- can't guarantee overlap constraint
+
+
+        CREATE TABLE User(
+          uid int PRIMARY KEY,
+          name text,
+          type int,
+          grade int,
+          rating int,
+          CHECK (type IN ('student', 'staff')),
+          CHECK (type = 'student' AND grade is not null),
+          CHECK (type = 'staff' AND rating is not null),
+        )
+        -- does this allow overing (yes)
+        -- does this allow overlap?
+        -- if allow overlap, type needs to be multi-valued (a table)
+
+        
+        CREATE TABLE User(
+          uid int PRIMARY KEY,
+          name text,
+          grade int,
+          rating int,
+          CHECK (grade is not null or rating is not null)
+        )
+        -- what about this, does it allow overlap?
+        -- uguuggh.. does this seem really ugly?  it is!
+
+
+
+        CREATE TABLE Student(
+          uid int PRIMARY KEY,
+          name text,
+          grade int
+        )
+
+        CREATE TABLE Staff(
+          uid int PRIMARY KEY,
+          name text,
+          rating int
+        )
+
+        SELECT uid, name FROM (Student UNION Staff);
+
+        -- theres' no globally unique user id
+ 
