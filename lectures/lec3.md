@@ -351,7 +351,8 @@ What about total participation from both sides?
           b int,
           primary key(a, b)
         );
-        -- this is exactly one, how to relax to at least one?
+        -- this is many to many which is A -- A_B -- B
+        -- how to enforce to at least one?
  
 
 
@@ -397,6 +398,7 @@ What about IS_A relationships?
         -- does this allow overing (yes)
         -- does this allow overlap?
         -- if allow overlap, type needs to be multi-valued (a table)
+        -- or encode every possible combination of types (painful)
 
         
         CREATE TABLE User(
