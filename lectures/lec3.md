@@ -429,3 +429,16 @@ What about IS_A relationships?
 
         -- theres' no globally unique user id
  
+
+
+
+ To Summarize, what relationships set constraints in ER can we express in relational?
+
+        A --  ab -- B
+        A --> ab -- B
+        A --> ab <-- B
+        A ==> ab -- B
+        A ==> ab <-- B
+        A ==> ab <== B
+        A ==  ab -- B (with redundancy)
+
