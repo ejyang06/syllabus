@@ -325,8 +325,7 @@ What about total participation AND key constraints?
           UNIQUE (a),
           UNIQUE (b)
         );
-        -- does this work?
-        --    (only one A record can exist.  BUG)
+        -- does this work?  
         -- what about UNIQUE (a, b)?
         -- how to enforce that a record for A1 exists in A_B?
 
@@ -337,7 +336,17 @@ What about total participation AND key constraints?
           b int,
           primary key(a, b)
         );
-        -- can A have redundant data?  
+        -- does this work?  (no) Can there be multiple a=0 records? (yes)
+        -- what should we do to guarantee that each A record has exactly one B record and vice versa?
+
+        CREATE TABLE A_AND_B(
+          a int not null,
+          b int not null,
+          unique(a)
+          unique(b)
+        );
+        -- this should work
+
         
 What about total participation from both sides?
 
