@@ -352,7 +352,7 @@ What about total participation from both sides?
 
         -- A == A_B == B
 
-        -- can't play the "merge B and A_B" trick on both sides
+        -- can't play the "merge B and A_B" trick on both sides e.g., A_AND_B below
         -- why not?
 
         CREATE TABLE A_AND_B(
@@ -362,6 +362,8 @@ What about total participation from both sides?
         );
         -- this is many to many which is A -- A_B -- B
         -- how to enforce to at least one?
+        -- lesson: DBMS can't magically create records to satisfy constraints,
+        -- it can only check constraints based on what currenly exists in the database
  
 
 
@@ -390,8 +392,8 @@ What about IS_A relationships?
           uid int REFERENCES User,
           rating int
         )
-        -- uuugh, can't guarantee covering constraint
-        -- can't guarantee overlap constraint
+        -- uuugh, can't guarantee covering = yes constraint
+        -- can't guarantee overlap = yes constraint
 
 
         CREATE TABLE User(
@@ -449,5 +451,5 @@ What about IS_A relationships?
         A ==> ab -- B
         A ==> ab <-- B
         A ==> ab <== B
-        A ==  ab -- B (with redundancy)
+        A ==  ab -- B (at the cost of redundancy of A)
 
