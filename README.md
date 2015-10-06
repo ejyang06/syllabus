@@ -48,6 +48,7 @@ Programming Resources
 * Additional resources
   * [Java to Python Quick Guide](http://github.com/w4111/syllabus/java2python.MD)
   * [Python tutorial](https://docs.python.org/2/tutorial/)
+  * [Learn Python in Y Minutes](http://learnxinyminutes.com/docs/python/)
   * [Learn Python The Hard Way](http://learnpythonthehardway.org/book/)
   * [Flask documentation](flask.pocoo.org)
   * [Flask Tutorial](http://flask.pocoo.org/docs/0.10/tutorial/)
