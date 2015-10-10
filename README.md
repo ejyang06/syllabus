@@ -25,7 +25,7 @@ Textbook
 
 Course Resources
 
-* [Website](http://www.cs.columbia.edu/~ewu/4111)
+* [Website](http://www.cs.columbia.edu/~ewu/~coms4111)
 * [Piazza](https://piazza.com/class/id26ml2f2m0ju)
 * [Course Github](https://github.com/w4111/)
 
