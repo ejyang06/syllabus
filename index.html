@@ -20,6 +20,7 @@
         var spans = document.getElementsByClassName("date");
         var lastClassWasBefore = true;
         var tostr = function(dt) { return dateFormat(dt, 'dddd<br/>m/d') };
+        var toholiday = function(dt) { return dateFormat(dt, 'm/dd/yy') };
         var nextClassFunc = (function() {
           var gap = 5;
           return function(dt) {
@@ -31,7 +32,8 @@
 
         for (i = 0; i < spans.length; i++) {
             var dayString = tostr(curClass);
-            if (_.contains(holidays, dayString)) {
+            console.log(toholiday(curClass));
+            if (_.contains(holidays, toholiday(curClass))) {
               curClass = nextClassFunc(curClass);
               dayString = tostr(curClass);
             }
@@ -476,7 +478,7 @@
     },
 
     {
-      slug: "Guest Lecture (not on exam)",
+      slug: "Guest Lecture ",
       title: "",
       desc: "",
       readings: "",
@@ -486,17 +488,7 @@
     },
 
     {
-      slug: "Guest Lecture (not on exam)",
-      title: "",
-      desc: "",
-      readings: "",
-      notes: "",
-      hw: null,
-      due: null
-    },
-
-    {
-      slug: "Misc, Final Exam QA",
+      slug: "Guest Lecture ",
       title: "",
       desc: "",
       readings: "",
@@ -515,6 +507,20 @@
       hw: null,
       due: null
     },
+
+
+
+    {
+      slug: "Project Presentations, Misc",
+      title: "",
+      desc: "",
+      readings: "",
+      notes: "",
+      hw: null,
+      due: null
+    },
+
+
 
 
     ]}
