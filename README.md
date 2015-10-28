@@ -147,7 +147,7 @@ When using late days, note that homeworks tend to get harder later in the course
 <a name="help"></a>
 How to ask for help:
 
-0. Search google and see if it answers your question
+0. Search google and see if it answers your question.  Then tell us:
 1. What are you trying to do?
 2. What steps did you think would work and which have you tried?
 3. How did it fail and why do you think it failed (OK to say I don't know why it failed)?
