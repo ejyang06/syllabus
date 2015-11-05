@@ -23,6 +23,7 @@ app = Flask(__name__, template_folder=tmpl_dir)
 # XXX: set this to your database
 #
 DATABASEURI = "postgresql://localhost/test"
+DATABASEURI = "sqlite:///test.db"
 
 engine = create_engine(DATABASEURI)
 engine.execute("""CREATE TABLE if not exists bad_table (
@@ -44,6 +45,7 @@ def teardown_request(exception):
     if hasattr(g, 'conn'):
       g.conn.close()
   except Exception as e:
+    print e
     pass
 
 @app.route('/', methods=["POST", "GET"])
@@ -64,10 +66,13 @@ def index():
 @app.route('/safe/', methods=["POST", "GET"])
 def safe_index():
   if request.method == "POST":
-    name = request.form['name']
-    q = "INSERT INTO bad_table(name) VALUES(%s);"
-    print q
-    g.conn.execute(q, (name,))
+    try:
+      name = request.form['name']
+      q = "INSERT INTO bad_table(name) VALUES(?);"
+      print q
+      g.conn.execute(q, (name,))
+    except Exception as e:
+      print e
 
   cursor = g.conn.execute("SELECT * FROM bad_table limit 100")
   rows = cursor.fetchall()
