@@ -117,7 +117,7 @@ def test(join_func, outer, inner):
 iindex = build_index(inner)
 oindex = build_index(outer)
 
-#test(nlj, outer, inner)
+test(nlj, outer, inner)
 test(inlj, outer, iindex)
 #test(hinlj, outer, inner)
 test(hj, oindex, iindex)
