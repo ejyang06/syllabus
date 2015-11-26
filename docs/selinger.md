@@ -1,4 +1,24 @@
+
+
+Recall
+
+* Nested loops join works as follows
+
+        # R has M pages
+        # S has N pages
+        # 2 tuples per page
+        R join S:
+        for tuple in R        # M pages read, 2M tuples
+           for tuple in S     # N pages read
+             if tuples match, return them  # no disk io
+
+        # M + 2 * M * N pages
+              
+
+
 # Selinger optimizer walkthrough
+
+
 
 R join S join T on the same key
 
@@ -7,13 +27,14 @@ Statistics
         C: 1000 pages
         D: 10 pages
         E: 10000 pages
+        1 tuple per page
         selectivity of E on join key: 1 / 10000
         primary index of E on join key
         fanout: 100
         fillfactor: 100%
 
-Partial run through of Selinger algorithm, assuming nested loops only.
-Cost in Disk IO
+* Partial run through of Selinger algorithm, assuming nested loops only.
+* Want cost in Disk IO
 
 
 ### Iteration 1
